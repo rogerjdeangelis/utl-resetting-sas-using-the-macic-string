@@ -28,25 +28,25 @@ was not successful in reactivating SAS.
 
 */
 
-%macro utlfix(dum);
-* fix frozen sas and restore to invocation ;
- dm "odsresults;clear;";
- ods results off;
- options ls=171 ps=65;run;quit;
- ods listing;
- ods select all;
- ods excel close;
- ods graphics off;
- proc printto;run;
- goptions reset=all;
- endsubmit;
- endrsubmit;
- run;quit;
-%utlnopts;
-%utl_close;
-%utlopts;
-
-%mend utlfix;
+%macro utlfix(dum);                           
+* fix frozen sas and restore to invocation ;  
+ dm "odsresults;clear;";                      
+ ods results off;                             
+ options ls=255 ps=65;run;quit;               
+ %utlnopts;                                   
+ %utl_close;                                  
+ %utlopts;                                    
+ ods listing;                                 
+ ods select all;                              
+ ods excel close;                             
+ ods graphics off;                            
+ proc printto;run;                            
+ goptions reset=all;                          
+ endsubmit;                                   
+ endrsubmit;                                  
+ run;quit;                                    
+%mend utlfix;                                 
+                                              
 
 
 %macro utl_close;
